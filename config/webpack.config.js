@@ -5,8 +5,7 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     entry: {
-        'scrollPullRefresh': path.resolve(__dirname, "../src/reactPullRefresh.tsx"),
-        'scrollPullRefresh.min': path.resolve(__dirname, "../src/reactPullRefresh.tsx"),
+        'scrollPullRefresh.min': path.resolve(__dirname, "../src/reactPullRefresh.tsx")
     },
     module: {
         rules: [
@@ -18,12 +17,24 @@ module.exports = {
             {
                 test: /\.(less|css)/,
                 use: [MiniCssExtractPlugin.loader,'css-loader','less-loader']
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|svg|jpg|png|gif|mp3|mp4|pdf)$/,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192,
+                      esModule: false
+                    }
+                  }
+                ]
             }
         ]
     },
     output: {
         filename: '[name].js',
-        path: __dirname + '/dist',
+        path: path.resolve(__dirname, '../build'),
         library: "scrollPullRefresh",
         libraryExport: 'default',
         libraryTarget: 'umd'

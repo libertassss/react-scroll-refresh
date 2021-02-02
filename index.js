@@ -1,3 +1,3 @@
 
-module.exports = require('./config/dist/scrollPullRefresh.min.js');
+module.exports = require('./build/scrollPullRefresh.min.js');
 

@@ -1,6 +1,7 @@
 import React, { FC, TouchEvent, useRef, MouseEvent, useState, useEffect } from 'react';
 import './index.less';
 import { dragStateType, homeProps } from './propType';
+import cns from 'classnames';
 
 
 const durationMap: any = {
@@ -16,8 +17,26 @@ const bezierMap: any = {
 };
 
 
+const translateHeight = (height: string | number | 'auto') => {
+    if(typeof height === 'string'){
+        return height;
+    }
+    if(typeof height === 'number'){
+        return `${height}px`;
+    }
+}
+
+
 const ReactPullRefresh :FC<homeProps> = (props: homeProps) => {
-    const { onRefresh = () => {} , refreshing, direction, distanceToRefresh = 25, children } = props;
+    const { onRefresh = () => {} , 
+            refreshing, 
+            direction, 
+            distanceToRefresh = 40, 
+            children, 
+            height= "200",
+            desc = "加载中...",
+            className
+    } = props;
     const contentRef = useRef<any>();
     const contentWrapperRef = useRef<any>();
     const [ scrollStyle, setScrollStyle ] = useState<any>();
@@ -48,7 +67,8 @@ const ReactPullRefresh :FC<homeProps> = (props: homeProps) => {
         contentWrapperRef.current.addEventListener("transitionend", isNeedReset);
         setDragState(dragState);
         return distroy;
-    },[])   
+    },[]) 
+    
 
     const distroy = () => {
         contentWrapperRef.current.removeEventListener("transitionend", isNeedReset);
@@ -259,10 +279,10 @@ const ReactPullRefresh :FC<homeProps> = (props: homeProps) => {
 
 
     return (
-        <div className="hp-box" ref={contentRef} style={{height: `200px`}}  
+        <div className={cns("hp-box", className)} ref={contentRef} style={{height: `${translateHeight(height)}`}}  
         >
-            { direction === 'down' && <span className="refresh-icon">刷新中.....</span>}
-            { direction === 'up' && <span className="loading-icon">加载中.....</span>}
+            { direction === 'down' && refreshing && <p className="refresh-icon">{desc}</p>}
+            { direction === 'up' && refreshing && <p className="loading-icon">{desc}</p>}
             <div ref={contentWrapperRef}
                 style={scrollStyle}
                 onTouchStart={(e) => onTouchStart(e)} 

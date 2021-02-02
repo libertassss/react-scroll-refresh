@@ -3,7 +3,10 @@ export interface homeProps {
     direction?: 'up' | 'down',
     onRefresh?: () => void,
     refreshing?: boolean,
-    children?: any
+    children?: any,
+    height?: number | 'auto' | string,
+    desc?: string,
+    className?: string
 }
 
 export type dragStateType = {
