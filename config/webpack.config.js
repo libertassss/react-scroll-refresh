@@ -16,7 +16,7 @@ module.exports = {
             },
             {
                 test: /\.(less|css)/,
-                use: [MiniCssExtractPlugin.loader,'css-loader','less-loader']
+                use: ['css-loader','less-loader']
             },
             {
                 test: /\.(woff|woff2|eot|ttf|svg|jpg|png|gif|mp3|mp4|pdf)$/,
@@ -35,9 +35,9 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, '../build'),
-        library: "scrollPullRefresh",
+        libraryTarget: 'umd',
+        library: 'scrollPullRefresh',
         libraryExport: 'default',
-        libraryTarget: 'umd'
     },
     optimization: {
         minimize: true,
@@ -54,14 +54,6 @@ module.exports = {
         },
         extensions: [ '.jsx', '.tsx', '.js', '.ts', '.less', '.css' ]
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            // 类似于 webpackOptions.output 中的选项
-            // 所有选项都是可选的
-            filename: 'static/[name].[contenthash].css',
-            chunkFilename: 'static/[id].[contenthash].css',
-        }),
-    ],
     externals: {
         react: {
           commonjs: 'react',

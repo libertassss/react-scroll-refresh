@@ -4,5 +4,15 @@
 		"@babel/preset-env",
         "@babel/preset-react",
         "@babel/preset-typescript"
+	],
+	"plugins": [
+		[
+			"import",
+			{
+				"libraryName": "scroll-refresh",
+				"libraryDirectory": "build",
+  				"style": "css" // or 'css'
+			}
+		]
 	]
 }
