@@ -50,5 +50,6 @@ export default Test
 * desc (刷新文字描述)
 * className (类名)
 
-# [示例](https://libertassss.github.io/pages/scroll-refresh/home)
+# [示例](https://libertassss.github.io/pages/scroll-refresh/index.html)
+# [github](https://github.com/libertassss/react-scroll-refresh.git)
 

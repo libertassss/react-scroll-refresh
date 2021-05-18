@@ -1,6 +1,6 @@
 {
   "name": "scroll-refresh",
-  "version": "1.0.23",
+  "version": "1.0.25",
   "description": "上拉刷新下拉加载滚动组件",
   "main": "index.js",
   "scripts": {
