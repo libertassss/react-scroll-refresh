@@ -12,7 +12,7 @@ module.exports = {
             {
                 test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
-                use: 'babel-loader'
+                use: ['babel-loader', 'ts-loader']
             },
             {
                 test: /\.(less|css)/,
@@ -61,7 +61,7 @@ module.exports = {
           amd: 'react',
           root: 'React',
         },
-        'react-dom': {
+        "react-dom": {
           commonjs: 'react-dom',
           commonjs2: 'react-dom',
           amd: 'react-dom',
