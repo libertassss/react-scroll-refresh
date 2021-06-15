@@ -1,0 +1,56 @@
+.hp-box{
+    height: 100px;
+    overflow: hidden;
+    // background: black;
+    position:relative;
+    overflow: hidden;
+    .refresh-icon{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ccc;
+        &::before{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background: url('./assetes/images/load-more.gif') no-repeat center/contain;
+            content: '';
+            margin-right: 10px;
+        }
+    }
+    .loading-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;  
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+        color: #ccc;
+        &::before{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background: url('./assetes/images/load-more.gif') no-repeat center/contain;
+            content: '';
+        }
+    }
+    .hp-wrapper{
+       width: 100%;
+       position: relative;
+       z-index: 2;  
+    }
+    
+}
